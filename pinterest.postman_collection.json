@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "53beefa3-a396-49d1-a034-a7a90055f22f",
+		"name": "pinterest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22947797"
+	},
+	"item": [
+		{
+			"name": "sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":12,\r\n    \"email\":\"httkk@gmail.com\",\r\n    \"password\":\"123123\",\r\n    \"name\":\"hatran112\",\r\n    \"age\":265\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/sign-up",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list img by name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxMiwiZW1haWwiOiJodHRra0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRtQkZnVlEzRTBnSGhaWkZnOEphdHhldll5WTZJRXVMQ3NRei9ZVHZTR1haQjNLaTBFMjN5VyIsIm5hbWUiOiJoYXRyYW4xMTIiLCJhZ2UiOjI2NX0sImlhdCI6MTcwNTMzMjI2MywiZXhwIjoxNzM2ODg5ODYzfQ.WZ6XHi2gVqQqvlc_MQMESMmiMm6d8vcl6WJYOQzP1CA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/image/get-image?img_name=30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"image",
+						"get-image"
+					],
+					"query": [
+						{
+							"key": "img_name",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get img detail - user info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxMiwiZW1haWwiOiJodHRra0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRtQkZnVlEzRTBnSGhaWkZnOEphdHhldll5WTZJRXVMQ3NRei9ZVHZTR1haQjNLaTBFMjN5VyIsIm5hbWUiOiJoYXRyYW4xMTIiLCJhZ2UiOjI2NX0sImlhdCI6MTcwNTMzMjI2MywiZXhwIjoxNzM2ODg5ODYzfQ.WZ6XHi2gVqQqvlc_MQMESMmiMm6d8vcl6WJYOQzP1CA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/image/get-image-detail/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"image",
+						"get-image-detail",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get comment by img id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comment/get-comment/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comment",
+						"get-comment",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get img storage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/saved-imaged/get-saved-imaged/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"saved-imaged",
+						"get-saved-imaged",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":54,\r\n       \"user_id\":2, \r\n       \"img_id\":2, \r\n       \"content\":\" 911 \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/comment/create-comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comment",
+						"create-comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxMiwiZW1haWwiOiJodHRra0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRtQkZnVlEzRTBnSGhaWkZnOEphdHhldll5WTZJRXVMQ3NRei9ZVHZTR1haQjNLaTBFMjN5VyIsIm5hbWUiOiJoYXRyYW4xMTIiLCJhZ2UiOjI2NX0sImlhdCI6MTcwNTMzMjI2MywiZXhwIjoxNzM2ODg5ODYzfQ.WZ6XHi2gVqQqvlc_MQMESMmiMm6d8vcl6WJYOQzP1CA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/get-user/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"get-user",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get list saved img by user id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/saved-imaged/get-img-by-user/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"saved-imaged",
+						"get-img-by-user",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get list img created by user id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxMiwiZW1haWwiOiJodHRra0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRtQkZnVlEzRTBnSGhaWkZnOEphdHhldll5WTZJRXVMQ3NRei9ZVHZTR1haQjNLaTBFMjN5VyIsIm5hbWUiOiJoYXRyYW4xMTIiLCJhZ2UiOjI2NX0sImlhdCI6MTcwNTMzMjI2MywiZXhwIjoxNzM2ODg5ODYzfQ.WZ6XHi2gVqQqvlc_MQMESMmiMm6d8vcl6WJYOQzP1CA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/image/get-img-by-user/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"image",
+						"get-img-by-user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete img",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxMiwiZW1haWwiOiJodHRra0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRtQkZnVlEzRTBnSGhaWkZnOEphdHhldll5WTZJRXVMQ3NRei9ZVHZTR1haQjNLaTBFMjN5VyIsIm5hbWUiOiJoYXRyYW4xMTIiLCJhZ2UiOjI2NX0sImlhdCI6MTcwNTMzMjI2MywiZXhwIjoxNzM2ODg5ODYzfQ.WZ6XHi2gVqQqvlc_MQMESMmiMm6d8vcl6WJYOQzP1CA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/image/delete-img/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"image",
+						"delete-img",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"id\":12,\r\n    \"password\":\"123123\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxMiwiZW1haWwiOiJodHRra0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRtQkZnVlEzRTBnSGhaWkZnOEphdHhldll5WTZJRXVMQ3NRei9ZVHZTR1haQjNLaTBFMjN5VyIsIm5hbWUiOiJoYXRyYW4xMTIiLCJhZ2UiOjI2NX0sImlhdCI6MTcwNTMzMjI2MywiZXhwIjoxNzM2ODg5ODYzfQ.WZ6XHi2gVqQqvlc_MQMESMmiMm6d8vcl6WJYOQzP1CA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":12,\r\n    \"email\":\"kd@gmail.com\",\r\n    \"name\": \"abd\",\r\n    \"age\":155\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/update-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"update-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload pic cloud",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Khoi/Desktop/402930568_746164980889463_1729927386445994539_n.jpg"
+						},
+						{
+							"key": "id",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "img_name",
+							"value": "tang cam",
+							"type": "text"
+						},
+						{
+							"key": "img_decs",
+							"value": "asfd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/image/create-img/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"image",
+						"create-img",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload pic cloud multi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": [
+								"/C:/Users/Khoi/Desktop/67784325_684592235390495_7007584196801593344_n.jpg",
+								"/C:/Users/Khoi/Desktop/400680527_739330981572863_2149743562869809171_n.jpg"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/image/upload-multiple-picture",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"image",
+						"upload-multiple-picture"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
