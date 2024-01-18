@@ -63,7 +63,7 @@ const signUp = async (req, res) => {
     });
 
     if (data) {
-      res.status(400), send("User exists!!!");
+      res.status(400).send("User exists!!!");
     } else {
       // mã hoá pass
       let encodePassword = bcrypt.hashSync(password, 10);

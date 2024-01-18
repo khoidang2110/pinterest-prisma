@@ -10,17 +10,31 @@ const createImg = async (req, res) => {
     let id = req.body.id;
     let img_name = req.body.img_name;
     let img_decs = req.body.img_decs;
-    let newData = {
-      id: Number(id),
-      img_name,
-      img_url: req.file.path,
-      img_decs,
-      user_id: Number(user_id),
-    };
-    await prisma.image.create({
-      data: newData,
+
+    const data = await prisma.image.findUnique({
+      where: {
+        id:Number(id),
+      },
     });
-    return res.send("picture uploaded");
+
+    if (data) {
+     res.status(400).send("img id exists!!!");
+    }else {
+      let newData = {
+        id: Number(id),
+        img_name,
+        img_url: req.file.path,
+        img_decs,
+        user_id: Number(user_id),
+      };
+      await prisma.image.create({
+        data: newData,
+      });
+      return res.send("picture uploaded");
+    }
+
+   
+
   } catch (error) {
     res.send(`Backend error: ${error}`);
   }
