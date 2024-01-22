@@ -38,7 +38,7 @@ model saved_imaged {
   user_id     Int?
   img_id      Int?
   storage_day DateTime? @db.Date
-  image       image?    @relation(fields: [img_id], references: [id], map: "saved_imaged_ibfk_1")
+  image       image?    @relation(fields: [img_id], references: [id], onDelete: Cascade, map: "saved_imaged_ibfk_1")
   users       users?    @relation(fields: [user_id], references: [id], map: "saved_imaged_ibfk_2")
 
   @@index([img_id], map: "img_id")

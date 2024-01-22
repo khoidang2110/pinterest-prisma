@@ -69,7 +69,7 @@ CREATE TABLE saved_imaged (
     user_id INT,
     img_id INT,
     storage_day DATE,
-    FOREIGN KEY (img_id) REFERENCES image(id) ON DELETE set null ON UPDATE CASCADE,
+    FOREIGN KEY (img_id) REFERENCES image(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE set null ON UPDATE CASCADE
 );
 
@@ -77,8 +77,8 @@ CREATE TABLE saved_imaged (
 
 INSERT INTO saved_imaged (user_id,img_id, storage_day) VALUES
 (1, 1, '2024-01-12'),
-(2, 2, '2024-01-13'),
-(3, 3, '2024-01-14'),
+(6, 6, '2024-01-13'),
+(1,12, '2024-01-14'),
 (4, 4, '2024-01-15'),
 (5, 5, '2024-01-16');
 
