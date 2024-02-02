@@ -1,0 +1,28 @@
+1.sign up
+{
+    "id":14,
+    "email":"khoidang@gmail.com",
+    "password":"123123",
+    "name":"khoi dang",
+    "age":35
+    
+}2. create comment
+{
+    "id":54,
+       "user_id":2, 
+       "img_id":2, 
+       "content":" 911 "
+}
+3.login
+{
+     "id":14,
+    "password":"123123"
+   
+}
+4.update user
+{
+    "id":6,
+    "email":"kd@gmail.com",
+    "name": "abd",
+    "age":155
+}

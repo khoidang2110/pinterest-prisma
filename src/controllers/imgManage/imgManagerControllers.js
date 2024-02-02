@@ -34,7 +34,7 @@ const getSavedImagedByUserId = async (req, res) => {
   try {
     let data = await prisma.saved_imaged.findMany({
       where: {
-        id: Number(id),
+        user_id: Number(id),
       },
     });
 
