@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+   output   = "./generated/client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model comments {
+  id          Int       @id @default(autoincrement())
+  user_id     Int?
+  img_id      Int?
+  comment_day DateTime? @db.Date
+  content     String?   @db.VarChar(255)
+  image       image?    @relation(fields: [img_id], references: [id], map: "comments_ibfk_1")
+  users       users?    @relation(fields: [user_id], references: [id], map: "comments_ibfk_2")
+
+  @@index([img_id], map: "img_id")
+  @@index([user_id], map: "user_id")
+}
+
+model image {
+  id           Int            @id @default(autoincrement())
+  img_name     String?        @db.VarChar(100)
+  img_url      String?        @db.VarChar(255)
+  img_decs     String?        @db.VarChar(255)
+  user_id      Int?
+  comments     comments[]
+  users        users?         @relation(fields: [user_id], references: [id], map: "image_ibfk_1")
+  saved_imaged saved_imaged[]
+
+  @@index([user_id], map: "user_id")
+}
+
+model saved_imaged {
+  id          Int       @id @default(autoincrement())
+  user_id     Int?
+  img_id      Int?
+  storage_day DateTime? @db.Date
+  image       image?    @relation(fields: [img_id], references: [id], onDelete: Cascade, map: "saved_imaged_ibfk_1")
+  users       users?    @relation(fields: [user_id], references: [id], map: "saved_imaged_ibfk_2")
+
+  @@index([img_id], map: "img_id")
+  @@index([user_id], map: "user_id")
+}
+
+model users {
+  id           Int            @id @default(autoincrement())
+  email        String?        @db.VarChar(225)
+  password     String?        @db.VarChar(255)
+  name         String?        @db.VarChar(100)
+  age          Int?
+  avatar       String?        @db.VarChar(255)
+  comments     comments[]
+  image        image[]
+  saved_imaged saved_imaged[]
+}
