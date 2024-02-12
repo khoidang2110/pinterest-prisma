@@ -29,7 +29,7 @@ const login = async (req, res) => {
         let payload = {
           id: data.id,
           email: data.email,
-          // password:data.password,
+          password:data.password,
           name:data.name,
           age:data.age
         
@@ -84,20 +84,23 @@ const signUp = async (req, res) => {
   }
 };
 const updateUser = async (req,res)=>{
-  let { id,email,name,age } = req.body;
+  let { id,email,password,name,age } = req.body;
   let { token } = req.headers;
   let isValidToken = checkToken(token);
+  let encodePassword = bcrypt.hashSync(password, 10);
 
   if(id==Number(isValidToken.data.data.id))
   {
+   
      await prisma.users.update({
       where:{
         id,
       },
       data:{
-        email,
-        name,
-        age 
+        email: email ? email : isValidToken.data.data.email,
+        password: password ? encodePassword : isValidToken.data.data.password ,
+        name: name ? name : isValidToken.data.data.name,
+        age : age ? age : isValidToken.data.data.age, 
       }
     })
 
