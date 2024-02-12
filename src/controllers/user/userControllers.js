@@ -29,7 +29,7 @@ const login = async (req, res) => {
         let payload = {
           id: data.id,
           email: data.email,
-          password:data.password,
+          // password:data.password,
           name:data.name,
           age:data.age
         
@@ -100,9 +100,8 @@ const updateUser = async (req,res)=>{
         age 
       }
     })
-    res.send("user updated")
 
-   
+   res.send("User updated, please login again to get new token");
   }else {
     res.send("you are not the owner")
   }
