@@ -87,7 +87,7 @@ const updateUser = async (req, res) => {
   let encodePassword = bcrypt.hashSync(password, 10);
 
   if (id == Number(isValidToken.data.data.id)) {
-    await prisma.users.update({
+   const updatedUser =  await prisma.users.update({
       where: {
         id,
       },
@@ -100,11 +100,11 @@ const updateUser = async (req, res) => {
     });
 
     let payload = {
-      id: isValidToken.data.data.id,
-      email: email ? email : isValidToken.data.data.email,
-      password: password ? encodePassword : isValidToken.data.data.password,
-      name: name ? name : isValidToken.data.data.name,
-      age: age ? age : isValidToken.data.data.age,
+      id: updatedUser.id,
+      email: updatedUser.email,
+      password: updatedUser.password,
+      name: updatedUser.name,
+      age: updatedUser.age,
     };
 
     let newToken = createToken(payload);
