@@ -14,7 +14,6 @@ const login = async (req, res) => {
     let data = await prisma.users.findUnique({
       where: {
         id,
-     
       },
     });
 
@@ -29,15 +28,13 @@ const login = async (req, res) => {
         let payload = {
           id: data.id,
           email: data.email,
-          password:data.password,
-          name:data.name,
-          age:data.age
-        
-
+          password: data.password,
+          name: data.name,
+          age: data.age,
         };
         let token = createToken(payload);
         res.status(200).send(token);
-      }else {
+      } else {
         res.status(400).send("password incorrect!");
       }
     } else {
@@ -83,32 +80,40 @@ const signUp = async (req, res) => {
     res.status(500).send(`Backend error: ${error}`);
   }
 };
-const updateUser = async (req,res)=>{
-  let { id,email,password,name,age } = req.body;
+const updateUser = async (req, res) => {
+  let { id, email, password, name, age } = req.body;
   let { token } = req.headers;
   let isValidToken = checkToken(token);
   let encodePassword = bcrypt.hashSync(password, 10);
 
-  if(id==Number(isValidToken.data.data.id))
-  {
-   
-     await prisma.users.update({
-      where:{
+  if (id == Number(isValidToken.data.data.id)) {
+    await prisma.users.update({
+      where: {
         id,
       },
-      data:{
+      data: {
         email: email ? email : isValidToken.data.data.email,
-        password: password ? encodePassword : isValidToken.data.data.password ,
+        password: password ? encodePassword : isValidToken.data.data.password,
         name: name ? name : isValidToken.data.data.name,
-        age : age ? age : isValidToken.data.data.age, 
-      }
-    })
+        age: age ? age : isValidToken.data.data.age,
+      },
+    });
 
-   res.send("User updated, please login again to get new token");
-  }else {
-    res.send("you are not the owner")
+    let payload = {
+      id: isValidToken.data.data.id,
+      email: email ? email : isValidToken.data.data.email,
+      password: password ? encodePassword : isValidToken.data.data.password,
+      name: name ? name : isValidToken.data.data.name,
+      age: age ? age : isValidToken.data.data.age,
+    };
+
+    let newToken = createToken(payload);
+    res.status(200).send({
+      message: "User updated, please use the new token to access",
+      token: newToken,
+    });
+  } else {
+    res.send("you are not the owner");
   }
-
-  
-}
+};
 export { signUp, login, updateUser };
